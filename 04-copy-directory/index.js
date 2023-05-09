@@ -10,9 +10,11 @@ fsPromises.mkdir(path.join(__dirname,'files-copy')).then(function() {
 
  fs.readdir('files',(err,data)=>{  
     data.forEach(file=>{
-        console.log(file+" - "+path.extname(file)+" - "+fs.statSync("files/" +file).size+"B")    
+        fs.stat(path.join(__dirname,'secret-folder',file), function(err, stats) {               
+            console.log(`${file} - ${path.extname(file)} -  ${stats.size}B`)  
     }) 
 })
+ })
 
 //let { COPYFILE_EXCL } = fs.constants;
 fs.copyFile('files/test-css.css', 'files-copy/test-css.css', err => {

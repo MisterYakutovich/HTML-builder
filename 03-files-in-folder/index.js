@@ -1,17 +1,18 @@
 const fs=require("fs")
 const path=require("path")
+const fsPromises = fs.promises;
 
-fs.readdir('secret-folder',(err,data)=>{  
-    data.forEach(file=>{
-    console.log(file+" - "+path.extname(file)+" - "+fs.statSync("secret-folder/" +file).size+"B")      
-    }) 
-})
-
-fs.readdir('secret-folder',{ withFileTypes: true },(err,data)=>{
-      data.forEach(file => {
-      console.log(file.isDirectory());
+fs.readdir(path.join(__dirname,'secret-folder'),(err,data)=>{  
+    data.forEach(file=>{     
+        fs.stat(path.join(__dirname,'secret-folder',file), function(err, stats) {               
+            console.log(`${file} - ${path.extname(file)} -  ${stats.size}B`)  
+               })           
+      })
     })
-})
-//fs.stat("secret-folder/", function(err, stats) {
-   // console.log(stats);
-//})
+    
+fs.readdir(path.join(__dirname,'secret-folder'),{ withFileTypes: true },(err,data)=>{
+    data.forEach(file => {
+        console.log(file.isDirectory());
+      })
+    })
+   
