@@ -12,4 +12,7 @@ stdin.on("data",data=>{
     fs.appendFile(path.join(__dirname,"write.txt"),myString,(err)=>{        
 })
 })
-process.on("exit",()=>stdout.write("goodby"))
+process.on('SIGINT', () => {
+    process.exit();
+  });
+  process.on("exit",()=>stdout.write("goodby"))
