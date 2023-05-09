@@ -4,12 +4,12 @@ const {stdout,stdin}=process;
 
 stdout.write("enter any text or end the process Ctrl + C\n")
 stdin.on("data",data=>{
+    if (data.toString().trim()==="exit") {
+        process.exit()
+    }
     stdout.write("enter any text or end the process Ctrl + C\n")
     const myString=data.toString()
-    fs.appendFile(path.join(__dirname,"write.txt"),myString,(err)=>{  
-       if (myString==="exit") process.exit()
+    fs.appendFile(path.join(__dirname,"write.txt"),myString,(err)=>{        
 })
 })
-//process.on("exit",()=>stdout.write("goodby"))
-
-//process.exit()
+process.on("exit",()=>stdout.write("goodby"))
