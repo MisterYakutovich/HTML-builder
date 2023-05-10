@@ -34,4 +34,8 @@ fs.copyFile(path.join(__dirname,'files/test-js.js'), path.join(__dirname,'files-
     if(err) throw err; 
     console.log('Файл успешно скопирован');
  });
- 
+ //------------
+ fs.copyFile(path.join(__dirname,'files-copy/test-js.js'),path.join(__dirname,'files/test-js.js'), err => {
+    if(err) throw err;
+    console.log('Файл успешно скопирован');
+ });
