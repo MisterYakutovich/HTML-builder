@@ -13,7 +13,20 @@ fs.readdir(path.join(__dirname,'secret-folder'),{ withFileTypes: true },(err,dat
   
   })
  
-
+/*const full=path.join(__dirname,'secret-folder')
+async function prom (arg){
+    try{       
+let result=await fsPromises.readdir(arg)
+    result.forEach((file)=>{ 
+        fs.stat(arg,file), (err, stats)=> {  
+            console.log(`${file} - ${path.extname(file)} -  ${stats.size}B`) 
+            }     
+      })   
+} catch(err) {
+    console.error(err);
+  }
+}
+console.log(prom(full))*/
 
 
    
